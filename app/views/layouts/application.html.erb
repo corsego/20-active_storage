@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SupeRails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+        <p>
+      <% end %>
+
+      <strong>SupeRails.com</strong>
+      <% if user_signed_in? %>
+        <%= link_to "Home", root_path, class: "#{'font-weight-bold' if current_page?(root_path)}" %> |
+        <%= link_to "Posts", posts_path, class: "#{'font-weight-bold' if controller_name == "posts"}" %> |
+        <%= link_to current_user.email, edit_user_registration_path, class: "#{'font-weight-bold' if current_page?(edit_user_registration_path)}" %> |
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, class: "#{'font-weight-bold' if current_page?(new_user_session_path)}" %>
+      <% end %>
+      
+      <hr>
+
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
+
