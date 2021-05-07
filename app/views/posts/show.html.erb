@@ -4,6 +4,13 @@
 </p>
 
 <p>
+  <strong>Avatar:</strong>
+  <% if @post.avatar.attached? %>
+    <%= image_tag @post.avatar, width: "200px" %>
+  <% end %>
+</p>
+
+<p>
   <strong>Content:</strong>
   <%= simple_format(@post.content) %>
 </p>
