@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, direct_upload: true %>
   </div>
 
   <div class="field">
     <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
+    <%= form.file_field :images, multiple: true, direct_upload: true %>
   </div>
 
   <div class="field">
