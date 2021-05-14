@@ -13,8 +13,20 @@
 <p>
   <strong>Images:</strong>
   <% if @post.images.attached? %>
-    <% @post.images.each do |image| %>
-      <%= image_tag image, width: "200px" %>
+    <% @post.images.each do |attachment| %>
+      <% if attachment.image? %>
+        <%= image_tag attachment, width: "200px" %>
+      <% elsif attachment.audio? %>
+        <audio controls>
+          <source src="<%= rails_blob_url(attachment) %>" type="<%= attachment.content_type %>"/>
+        </audio>
+      <% elsif attachment.video? %>
+        <video controls width="480">
+          <source src="<%= rails_blob_url(attachment) %>" type="<%= attachment.content_type %>"/>
+        </video>
+      <% else %>
+        <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+      <% end %>
     <% end %>
   <% end %>
 </p>
