@@ -7,6 +7,7 @@
   <strong>Avatar:</strong>
   <% if @post.avatar.attached? %>
     <%= image_tag @post.avatar, width: "200px" %>
+    <%= link_to "Delte avatar", purge_avatar_post_path(@post), method: :delete %>
   <% end %>
 </p>
 

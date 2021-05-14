@@ -5,6 +5,12 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: :desc)
   end
 
+  def purge_avatar
+    @post = Post.find(params[:id])
+    @post.avatar.purge
+    redirect_back fallback_location: root_path, notice: "success"
+  end
+
   def show
   end
 
