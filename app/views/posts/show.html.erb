@@ -15,8 +15,7 @@
   <strong>Images:</strong>
   <% if @post.images.attached? %>
     <% @post.images.each do |attachment| %>
-      <%= attachment %>
-      <%= link_to "Delte attachment", purge_attachment_path(attachment), method: :delete %>
+      <br>
       <% if attachment.image? %>
         <%= image_tag attachment, width: "200px" %>
       <% elsif attachment.audio? %>
@@ -30,6 +29,8 @@
       <% else %>
         <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
       <% end %>
+      <br>
+      <%= link_to "Delte attachment", purge_attachment_path(attachment), method: :delete %>
     <% end %>
   <% end %>
 </p>

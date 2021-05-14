@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem "faker"
 gem "aws-sdk-s3", require: false
+gem 'active_storage_validations'
+gem 'mini_magick', '>= 4.9.5'
